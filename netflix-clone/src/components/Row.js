@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from '../api/axios';
 import './Row.css';
+import MovieModal from './MovieModal/index';
 
 export default function Row({ isLargeRow, title, id, fetchUrl }) {
   const [movies, setMovies] = useState([]);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [movieSelected, setMovieSelected] = useState({});
 
   useEffect(() => {
     fetchMovieData();
@@ -12,6 +15,11 @@ export default function Row({ isLargeRow, title, id, fetchUrl }) {
   const fetchMovieData = async () => {
     const request = await axios.get(fetchUrl);
     setMovies(request.data.results);
+  };
+
+  const handleClick = (movie) => {
+    setModalOpen(true);
+    setMovieSelected(movie);
   };
 
   return (
@@ -35,6 +43,7 @@ export default function Row({ isLargeRow, title, id, fetchUrl }) {
                 isLargeRow ? movie.poster_path : movie.backdrop_path
               } `}
               alt={movie.name}
+              onClick={() => handleClick(movie)}
             />
           ))}
         </div>
@@ -47,6 +56,9 @@ export default function Row({ isLargeRow, title, id, fetchUrl }) {
           <span className="arrow">{'>'}</span>
         </div>
       </div>
+      {modalOpen && (
+        <MovieModal {...movieSelected} setModalOpen={setModalOpen}></MovieModal>
+      )}
     </section>
   );
 }
