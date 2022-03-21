@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './MovieModal.css';
+import { useCloseModal } from '../../hooks/useCloseModal';
 
 export default function MovieModal({
   backdrop_path,
@@ -11,10 +12,19 @@ export default function MovieModal({
   vote_average,
   setModalOpen,
 }) {
+  // useCloseModal hook 사용
+  const closeModal = useCloseModal('modalCompo');
+
+  useEffect(() => {
+    if (closeModal) {
+      setModalOpen(false);
+    }
+  }, [closeModal]);
+
   return (
     <div className="presentation">
       <div className="wrapper-modal">
-        <div className="modal">
+        <div className="modal" id="modalCompo">
           <span onClick={() => setModalOpen(false)} className="modal-close">
             X
           </span>
