@@ -6,7 +6,7 @@ export const useCloseModal = (compoId) => {
   useEffect(() => {
     const clickModalOutside = (e) => {
       // 모달 외부 영역 클릭 시
-      if (!document.getElementById(compoId).contains(e.target)) {
+      if (!document.getElementById(compoId)?.contains(e.target)) {
         setIsOutside(true);
       }
     };
