@@ -15,3 +15,16 @@
 - localStorage에 데이터 저장
 
 ![image](https://user-images.githubusercontent.com/65033180/157172716-d2d298f1-a167-4d7d-ad53-c73b5e326ea1.png)
+
+<br>
+
+## 3차 미션 스크린샷
+### Basic
+- 모달창 외부 클릭 시 닫기
+
+![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/65033180/159477503-d6047093-fcf7-4346-8c0c-89241c19b0f6.gif)
+
+### Challenge
+- swiper 사용 => 밀어서 목록 넘기기
+
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/65033180/159477665-94fd860e-0fb3-404f-979d-5e08b9e6ff94.gif)
